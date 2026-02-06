@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nafasat Yameen | Rex – Developer Portfolio</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --black:#050505;
+      --green:#00ff88;
+      --yellow:#ffd500;
+      --neon:#39ff14;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:radial-gradient(circle at top,#0c0c0c,#000000 70%);
+      color:var(--yellow);
+      overflow-x:hidden;
+    }
+
+    /* ================= LOADER ================= */
+    #loader{
+      position:fixed;
+      inset:0;
+      background:#000;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+    }
+
+    .loader-bar{
+      width:70%;
+      height:18px;
+      border:3px solid var(--yellow);
+      box-shadow:0 0 30px var(--yellow);
+      overflow:hidden;
+    }
+
+    .loader-fill{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg,var(--yellow),var(--neon));
+      animation:load 2.8s forwards;
+    }
+
+    @keyframes load{
+      to{width:100%;}
+    }
+
+    /* ================= SCROLL GLOW ================= */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:radial-gradient(circle at center,rgba(0,255,136,0.25),transparent 60%);
+      opacity:0;
+      pointer-events:none;
+      transition:0.3s;
+      z-index:0;
+    }
+    body.scrolling::before{opacity:1;}
+
+    section{
+      padding:90px 10%;
+      position:relative;
+      z-index:1;
+    }
+
+    /* ================= HERO ================= */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:22px;
+    }
+
+    .logo{
+      width:90px;
+      filter:drop-shadow(0 0 20px var(--yellow));
+    }
+
+    .name{
+      font-family:'Orbitron',sans-serif;
+      font-size:3.4rem;
+      font-weight:700;
+      font-style:italic;
+      color:var(--neon);
+      text-shadow:0 0 25px var(--neon);
+    }
+
+    .typing{
+      font-size:1.4rem;
+      color:var(--green);
+      min-height:32px;
+    }
+
+    .hero p{
+      max-width:680px;
+      line-height:1.8;
+      color:#cfcfcf;
+    }
+
+    .btns{display:flex;gap:16px;margin-top:22px;}
+
+    .btn{
+      padding:13px 28px;
+      border:2px solid var(--yellow);
+      background:transparent;
+      color:var(--yellow);
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+      box-shadow:inset 0 0 0 var(--yellow);
+    }
+
+    .btn:hover{
+      background:var(--yellow);
+      color:#000;
+      box-shadow:0 0 30px var(--yellow);
+    }
+
+    /* ================= HEADINGS ================= */
+    h2{
+      font-size:2.6rem;
+      margin-bottom:24px;
+      color:var(--yellow);
+      text-shadow:0 0 15px var(--yellow);
+    }
+
+    /* ================= PROJECTS ================= */
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:32px;
+    }
+
+    .card{
+      background:linear-gradient(180deg,#050505,#0d0d0d);
+      border:1px solid rgba(255,213,0,0.4);
+      border-radius:18px;
+      padding:28px;
+      transition:0.4s;
+    }
+
+    .card:hover{
+      transform:translateY(-12px);
+      box-shadow:0 0 35px rgba(255,213,0,0.7);
+    }
+
+    .card img{width:70px;margin-bottom:16px;}
+
+    /* ================= DEVSTACK ================= */
+    .stack-item{margin-bottom:22px;}
+
+    .bar{
+      height:14px;
+      background:#111;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid var(--green);
+    }
+
+    .fill{
+      height:100%;
+      background:linear-gradient(90deg,var(--green),var(--yellow));
+      box-shadow:0 0 18px var(--green);
+    }
+
+    /* ================= CONTACT ================= */
+    .contact a{
+      display:block;
+      margin-bottom:12px;
+      color:var(--green);
+      text-decoration:none;
+      font-weight:500;
+    }
+    .contact a:hover{text-shadow:0 0 12px var(--green);}
+
+    /* ================= SAMURAI ================= */
+    .samurai{
+      position:fixed;
+      bottom:-40px;
+      right:-60px;
+      width:280px;
+      opacity:0;
+      animation:slash 2.8s ease-out forwards;
+      filter:drop-shadow(0 0 35px var(--green));
+      z-index:2;
+      animation-delay:3s; /* after loader */
+    }
+
+    @keyframes slash{
+      0%{transform:translate(120px,120px) scale(0.6);opacity:0;}
+      50%{opacity:1;}
+      100%{transform:translate(-120px,-160px) scale(1.05);opacity:1;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-bar">
+      <div class="loader-fill"></div>
+    </div>
+  </div>
+
+  <!-- HOME -->
+  <section class="hero" id="home">
+    <img src="rex_logo.png" class="logo" alt="Rex Logo">
+    <div class="name">Rex</div>
+    <div class="typing" id="typing"></div>
+
+    <p id="desc"></p>
+
+    <div class="btns">
+      <a href="#about"><button class="btn">About Me</button></a>
+      <a href="#projects"><button class="btn">Projects</button></a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I specialize in Discord bots, websites, emojis, and full server development with neon-focused UI systems.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <img src="aronix_logo.png" alt="Aronix Logo">
+        <h3>Aronix</h3>
+        <p>Aronix is a versatile Discord bot with 300+ commands enhancing security and fun.</p>
+        <p><b>Website & Emojis Developer:</b> Rex aka Nafasat Yameen</p>
+      </div>
+
+      <div class="card">
+        <img src="arzenx_logo.png" alt="ArzenX Logo">
+        <h3>ArzenX</h3>
+        <p>A growing developer platform and community for learning, building, selling, and chilling.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <h2>Dev Stack</h2>
+
+    <div class="stack-item"><b>NodeJS</b><div class="bar"><div class="fill" style="width:95%"></div></div></div>
+    <div class="stack-item"><b>Python</b><div class="bar"><div class="fill" style="width:0%"></div></div></div>
+    <div class="stack-item"><b>HTML / CSS</b><div class="bar"><div class="fill" style="width:99%"></div></div></div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <a href="mailto:kaizogaming787@gmail.com">📧 kaizogaming787@gmail.com</a>
+    <a href="https://discord.com/users/1109714278640001054" target="_blank">💬 Discord Profile</a>
+  </section>
+
+  <img src="samurai.gif" class="samurai" alt="Samurai Slash">
+
+  <script>
+    // Remove loader
+    window.addEventListener('load',()=>{
+      setTimeout(()=>{
+        document.getElementById('loader').style.display='none';
+      },2800);
+    });
+
+    // Typing
+    const text="Discord Developer • Website Developer • Server Architect";
+    const descText="Hello I Am Rex aka Nafasat Yameen, an intermediate Discord website developer and professional server developer. I have been working on many projects and have more than 2 years of experience. Check out more about me by clicking below.";
+
+    let i=0,j=0;
+    const el=document.getElementById('typing');
+    const desc=document.getElementById('desc');
+
+    function typeTitle(){
+      if(i<text.length){el.textContent+=text.charAt(i++);setTimeout(typeTitle,70);}else{setTimeout(typeDesc,300);}
+    }
+
+    function typeDesc(){
+      if(j<descText.length){desc.textContent+=descText.charAt(j++);setTimeout(typeDesc,22);}    }
+
+    typeTitle();
+
+    // Scroll glow
+    window.addEventListener('scroll',()=>{
+      document.body.classList.add('scrolling');
+      clearTimeout(window._s);
+      window._s=setTimeout(()=>document.body.classList.remove('scrolling'),180);
+    });
+  </script>
+</body>
+</html>
